@@ -1,11 +1,10 @@
 title: TEST CUSTOM PR TEMPLATE
 branchName: TEST BRANCH
 commitMessage: TEST COMMIT MESSAGE FOR JIRA TICKET: {{ jira_ids }}
-description: |
-  THIS IS A TEST DESCRIPTION
+description: THIS IS A TEST DESCRIPTION
   
   **Tickets**
-  {{ #jira_ids }}
+  {{ jira_ids }}
   - Fixes {{ . }}
   {{ /jira_ids }}
   
