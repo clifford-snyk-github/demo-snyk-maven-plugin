@@ -29,7 +29,6 @@ pipeline {
      //Open Source Scan
         stage('Snyk OpenSource Test') {
          steps{
-         echo "Testing..."
          snykSecurity(
                     snykInstallation: 'snyk@latest',
                     snykTokenId: 'organisation-snyk-api-token',
@@ -43,7 +42,13 @@ pipeline {
      //Code Scan
         stage('Snyk Code Test') {
          steps {
-                sh 'snyk code test --report --project-name=clifford-snyk-github/demo-snyk-maven-plugin'
+             snykSecurity(
+                    snykInstallation: 'snyk@latest',
+                    snykTokenId: 'organisation-snyk-api-token',
+                    failOnIssues: false
+                )
+                sh 'snyk code test --report --project-name=clifford-snyk-github/demo-snyk-maven-plugin',
+               
          }
         }
     }
