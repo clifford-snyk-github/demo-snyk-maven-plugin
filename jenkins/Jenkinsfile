@@ -10,6 +10,18 @@ pipeline {
                echo 'Building...'
             }
         }
+
+       //Install the Snyk CLI with npm. For more information, check:
+       // https://docs.snyk.io/snyk-cli/install-the-snyk-cli
+        stage('Install snyk CLI') {
+            steps {
+                script {
+                    sh 'npm install -g snyk'
+                }
+            }
+        }
+
+     //Open Source Scan
         stage('Snyk OpenSource Test') {
          steps{
          echo "Testing..."
