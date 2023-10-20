@@ -10,7 +10,7 @@ pipeline {
                echo 'Building...'
             }
         }
-        stage('Test') {
+        stage('Snyk OpenSource Test') {
          steps{
          echo "Testing..."
          snykSecurity(
@@ -20,8 +20,15 @@ pipeline {
                     failOnIssues: true
           
                 )
+         }   
+        }
+        stage('Snyk Code Test') {
+         steps {
+            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                sh 'snyk code test --sarif-file-output=results-code.sarif'
+            }
+            recordIssues  tool: sarif(name: 'Snyk Code', id: 'snyk-code', pattern: 'results-code.sarif')
          }
-            
         }
     }
 }
