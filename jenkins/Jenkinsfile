@@ -46,10 +46,7 @@ pipeline {
         }
         stage('Snyk Code Test') {
          steps {
-            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh 'snyk code test --sarif-file-output=results-code.sarif'
-            }
-            recordIssues  tool: sarif(name: 'Snyk Code', id: 'snyk-code', pattern: 'results-code.sarif')
+                sh 'snyk code test --report --project-name=AppJS'
          }
         }
     }
