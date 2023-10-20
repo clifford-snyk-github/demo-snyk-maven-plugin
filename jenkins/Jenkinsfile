@@ -1,0 +1,25 @@
+pipeline {
+ agent any
+ tools {
+  maven 'maven-3.9.5'
+ }
+
+    stages {
+        stage('Build') {
+            steps {
+               echo 'Building...'
+            }
+        }
+        stage('Test') {
+         steps{
+         echo "Testing..."
+         snykSecurity(
+                    snykInstallation: 'snyk@latest',
+                    snykTokenId: 'organisation-snyk-api-token',
+                    additionalArguments: '--debug --all-projects'
+                )
+         }
+            
+        }
+    }
+}
