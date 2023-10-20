@@ -47,9 +47,8 @@ pipeline {
                     snykTokenId: 'organisation-snyk-api-token',
                     failOnIssues: false
                 )
-                sh 'snyk code test --report --project-name=clifford-snyk-github/demo-snyk-maven-plugin',
-               
-         }
+                sh 'snyk code test --report --project-name=clifford-snyk-github/demo-snyk-maven-plugin'
         }
     }
+}
 }
