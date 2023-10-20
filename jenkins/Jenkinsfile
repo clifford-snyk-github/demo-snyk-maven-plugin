@@ -42,12 +42,8 @@ pipeline {
      //Code Scan
         stage('Snyk Code Test') {
          steps {
-             snykSecurity(
-                    snykInstallation: 'snyk@latest',
-                    snykTokenId: 'organisation-snyk-api-token',
-                    failOnIssues: false
-                )
-                sh 'snyk code test --report --project-name=clifford-snyk-github/demo-snyk-maven-plugin'
+          //I need to find a way to not fail the build. Similar to failOnIssues: false
+                sh 'snyk code test --report --target-reference=clifford-snyk-github/demo-snyk-maven-plugin'
         }
     }
 }
