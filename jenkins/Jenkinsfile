@@ -6,12 +6,7 @@ pipeline {
  }
 
     stages {
-        stage('Build') {
-            steps {
-               echo 'Building...'
-            }
-        }
-
+      
        //Install the Snyk CLI with npm. For more information, check:
        // https://docs.snyk.io/snyk-cli/install-the-snyk-cli
         stage('Install snyk CLI') {
@@ -44,9 +39,11 @@ pipeline {
                 )
          }   
         }
+     
+     //Code Scan
         stage('Snyk Code Test') {
          steps {
-                sh 'snyk code test --report --project-name=AppJS'
+                sh 'snyk code test --report --project-name=clifford-snyk-github/demo-snyk-maven-plugin'
          }
         }
     }
