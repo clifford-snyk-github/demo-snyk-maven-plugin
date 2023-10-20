@@ -43,7 +43,7 @@ pipeline {
         stage('Snyk Code Test') {
          steps {
           //I need to find a way to not fail the build. Similar to failOnIssues: false
-                sh 'snyk code test --report --target-reference=clifford-snyk-github/demo-snyk-maven-plugin --project-name=demo-snyk-maven-plugin/app.js'
+                sh 'snyk code test --report --target-reference=clifford-snyk-github/demo-snyk-maven-plugin --project-name=demo-snyk-maven-plugin/appJS'
         }
     }
 }
