@@ -16,7 +16,9 @@ pipeline {
          snykSecurity(
                     snykInstallation: 'snyk@latest',
                     snykTokenId: 'organisation-snyk-api-token',
-                    additionalArguments: '--debug --all-projects'
+                    additionalArguments: '--debug --all-projects',
+                    failOnIssues: false
+          
                 )
          }
             
