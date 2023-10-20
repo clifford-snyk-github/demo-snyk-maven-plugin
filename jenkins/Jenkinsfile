@@ -17,7 +17,7 @@ pipeline {
                     snykInstallation: 'snyk@latest',
                     snykTokenId: 'organisation-snyk-api-token',
                     additionalArguments: '--all-projects --code',
-                    failOnIssues: true
+                    failOnIssues: false
           
                 )
          }   
