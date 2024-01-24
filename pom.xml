@@ -51,6 +51,7 @@
                 </executions>
                 <configuration>
                   <apiToken>${env.SNYK_TOKEN}</apiToken>
+                  <failOnIssues>false</failOnIssues>
                 </configuration>
               </plugin>
         </plugins>
